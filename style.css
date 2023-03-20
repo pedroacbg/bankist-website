@@ -582,10 +582,6 @@ h4 {
   text-align: center;
 }
 
-.footer__copyright .footer__link {
-  font-size: 1.4rem;
-}
-
 /* MODAL WINDOW */
 .modal {
   position: fixed;
