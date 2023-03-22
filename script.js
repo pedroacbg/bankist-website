@@ -129,3 +129,159 @@ const headerObserver = new IntersectionObserver(stickyNav, {
   rootMargin: `-${navHeight}px`,
 });
 headerObserver.observe(header);
+
+///////////////////////////////////////
+// Reveal section
+const allSections = document.querySelectorAll('.section');
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+});
+
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add('section--hidden');
+});
+
+//////////////////////////////////////////////////
+////////////////// LECTURES //////////////////////
+//////////////////////////////////////////////////
+
+// Sticky navigation bad way
+/* const initialCoords = section1.getBoundingClientRect();
+
+window.addEventListener('scroll', function (event) {
+  if (this.window.scrollY > initialCoords.top) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
+}); */
+
+/* const h1 = document.querySelector('h1');
+
+// Going downwards: child
+console.log(h1.querySelectorAll('.highlight'));
+console.log(h1.childNodes);
+
+h1.firstElementChild.style.color = 'white';
+h1.lastElementChild.style.color = 'white';
+
+// Going upwards: parents
+console.log(h1.parentNode);
+h1.closest('.header').style.background = 'var(--gradient-secondary)';
+h1.closest('h1').style.background = 'var(--gradient-primary)';
+
+// Going sideways: siblings
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+
+console.log(h1.previousSibling);
+console.log(h1.nextSibling);
+
+console.log(h1.parentElement.children);
+[...h1.parentElement.children].forEach(function (element) {
+  if (element !== h1) {
+    element.style.transform = 'scale(0.5)';
+  }
+}); */
+
+// rgba(255, 255, 255)
+/* const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+console.log(randomColor(0, 255));
+
+document
+  .querySelector('.nav__link')
+  .addEventListener('click', function (event) {
+    this.style.backgroundColor = randomColor(0, 255);
+  });
+
+document
+  .querySelector('.nav__links')
+  .addEventListener('click', function (event) {
+    this.style.backgroundColor = randomColor(0, 255);
+  });
+
+document.querySelector('.nav').addEventListener('click', function (event) {
+  this.style.backgroundColor = randomColor(0, 255);
+}); */
+
+// Events
+/* const h1 = document.querySelector('h1');
+const alertH1 = function (event) {
+  alert('addEventListener: You are reading the heading :D');
+  h1.removeEventListener('mouseenter', alertH1);
+};
+
+h1.addEventListener('mouseenter', alertH1); */
+
+/* h1.onmouseenter = function (event) {
+  alert('addEventListener: You are reading the heading :D');
+}; */
+
+// Selecting elements
+/* console.log(document.documentElement);
+console.log(document.head);
+console.log(document.body);
+
+const header = document.querySelector('.header');
+const allSelections = document.querySelectorAll('.section');
+console.log(allSelections);
+
+document.getElementById('section--1');
+const allButtons = document.getElementsByTagName('button');
+console.log(allButtons);
+
+// Creating and inserting elements
+const message = document.createElement('div');
+message.classList.add('cookie-message');
+message.textContent = 'We use cookies for improve functionality and analytics.';
+message.innerHTML = `
+        We use cookies for improve functionality and analytics.
+        <button class="btn btn--close-cookie">Got it!</button>
+`;
+
+// header.prepend(message);
+header.append(message);
+// header.append(message.cloneNode(true));
+
+// header.before(message);
+
+// Delete elements
+document
+  .querySelector('.btn--close-cookie')
+  .addEventListener('click', function () {
+    message.remove();
+  });
+
+// Styles
+message.style.backgroundColor = '#37383d';
+message.style.width = '105%';
+
+console.log(message.style.color);
+console.log(message.style.backgroundColor);
+
+console.log(getComputedStyle(message).color);
+console.log(getComputedStyle(message).height);
+
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// Attributes
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+console.log(logo.src);
+console.log(logo.getAttribute('src')); */
